@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vote</title>
+</head>
+<body>
+    <h1>Current vote count:</h1>
+    <table id="vote-count">
+        <tr>
+            <th>Option</th>
+            <th>Count</th>
+        </tr>
+    </table>
+    <script>
+        var voteCountSource = new EventSource('/vote_count');
+        voteCountSource.onmessage = function(event) {
+            var voteCount = JSON.parse(event.data);
+            var voteCountTable = document.getElementById('vote-count');
+            voteCountTable.innerHTML = '';
+            for (var option in voteCount) {
+                var row = voteCountTable.insertRow();
+                var optionCell = row.insertCell(0);
+                var countCell = row.insertCell(1);
+                optionCell.innerHTML = option;
+                countCell.innerHTML = voteCount[option];
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Download Video</title>
+</head>
+<body>
+	<h1>Download Video</h1>
+    <img src="{{ url_for('static', filename=thumbnail_file) }}" alt="Video thumbnail">
+	<p>Click the link below to download the video:</p>
+	<a href="{{ video_url }}" download>{{ filename }}</a>
+</body>
+</html>

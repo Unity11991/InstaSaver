@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Instagram Video Downloader</title>
+  </head>
+  <body>
+    <h1>Instagram Video Downloader</h1>
+    <form method="post" action="/download">
+      <label for="post_url">Enter the URL of the Instagram post:</label><br>
+      <input type="text" id="post_url" name="post_url"><br>
+      <input type="submit" value="Download">
+    </form>
+  </body>
+</html>
+
+
+<script>
+    window.addEventListener('load', function() {
+        var video = document.getElementById('video');
+        video.addEventListener('loadeddata', function() {
+            video.src = "{{ url_for('static', filename=filename) }}";
+        });
+    });
+</script>
